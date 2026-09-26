@@ -7,6 +7,7 @@ describe("Stopwatch test", () => {
 	});
 
 	afterEach(() => {
+		stopwatch.stop();
 		stopwatch = null;
 	});
 
@@ -72,7 +73,7 @@ describe("Stopwatch test", () => {
 		jest.useFakeTimers();
 		const listener = jest.fn();
 		stopwatch.setListener(listener);
-		expect(listener).not.toBeCalled();
+		expect(listener).not.toHaveBeenCalled();
 		stopwatch.start();
 		setTimeout(() => {
 			expect(listener).toHaveBeenCalled();
